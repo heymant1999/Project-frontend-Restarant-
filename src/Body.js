@@ -1,0 +1,66 @@
+import React from "react";
+import  { useEffect, useState } from "react";
+import Shimmer from "./Shimmer";
+import Restaurentcard from "./RestaurentCard";
+import { Link } from "react-router-dom";
+
+
+
+
+
+
+  function filterData(searchinpuTxt,restaurants){
+    const filterData= restaurants.filter((restaurant)=>
+         restaurant?.data?.name?.toLowerCase()?.includes(searchinpuTxt.toLowerCase()))
+         return filterData;
+   }
+   
+    const Body=()=>{
+     const[allRestaurants,setallRestaurants]=useState([])
+     const [filteredrestaurants, setfilteredRestaurants] = useState([]);
+     const[searchinpuTxt,setSearchtInput]=useState("")
+    
+     useEffect(()=>{
+       getRestarants();
+     },[])
+     async function getRestarants(){
+       const data =  await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING")
+       const json = await data.json();
+       console.log(json)
+       //optional chaining
+       setallRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+       setfilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+     }
+     //conditional Rendering
+     if(!allRestaurants) return null;
+       if(filteredrestaurants?.length===0) return <h1>No restaurant match aur filter</h1>
+   
+     return  allRestaurants.length === 0 ? (
+     <Shimmer/>):(
+       <>
+       <div className="search-container">
+         <input type="text" className="search-input" placeholder="search" value={searchinpuTxt} onChange={(e)=>{
+           setSearchtInput(e.target.value)
+         }}/>
+         <button className="search-btn" onClick={(e)=>{
+           const data = filterData(searchinpuTxt,allRestaurants)
+           setfilteredRestaurants(data)
+         }}>search</button>
+        
+          
+       </div>
+     <div className="restaurent-list">
+       {filteredrestaurants.map((restaurent)=>{
+         return (
+         <Link to={"/restuarent/"+restaurent.data.id} key={restaurent.data.id}>
+         <Restaurentcard {...restaurent.data} />
+         </Link>)
+       })}
+      
+      
+     </div>
+     </>
+     )
+    }
+    
+    export default Body;
