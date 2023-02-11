@@ -8,6 +8,7 @@ import Error from './Error';
 import Contact from './Contact';
 import Body from './Body';
 import RestaurentDetail from './RestaurentDetail';
+import Profile from './Profile';
 
 
 const appRouter=createBrowserRouter([{
@@ -20,7 +21,11 @@ const appRouter=createBrowserRouter([{
   },
   {
     path:"/about",
-    element:<About/>
+    element:<About/>,
+    children:[{
+      path:"profile",
+      element:<Profile/>,
+    }]
   },
   {
     path:"/contact",
