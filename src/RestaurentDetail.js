@@ -2,22 +2,11 @@ import React, { useEffect ,useState} from 'react'
 import { useParams } from 'react-router-dom' 
 import { IMG_CDN_URL } from './Constant'
 import './App.css'
+import useRestaurant from './Utils/useRestaurant'
 
 const RestaurentDetail = () => {
   const { resId}=useParams();
-  const [restaurant,setrestaurent]=useState({});
-    
-    
-
-    useEffect(()=>{
-      getRestaurentInfo();
-    },[])
-    async function getRestaurentInfo(){
-      const data =  await fetch("https://www.swiggy.com/dapi/menu/v4/full?lat=12.9351929&lng=77.62448069999999&menuId="+resId);
-      const json = await data.json();
-     
-      setrestaurent(json.data);
-    }
+ const restaurant = useRestaurant(resId)
     
   return (
     <div className="menu">
@@ -31,7 +20,7 @@ const RestaurentDetail = () => {
         <h3>{restaurant?.costForTwoMsg}</h3>
        
 </div>
-   { <div> 
+   {/* <div> 
  <h1>Menu</h1>
    <ul>
           {Object.values(restaurant?.menu?.items).map((item) => (
@@ -39,7 +28,7 @@ const RestaurentDetail = () => {
           ))}
           
         </ul>  
-</div>        }
+</div>         */}
     </div> 
   )
 }
