@@ -2,12 +2,13 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useOnline from "./Utils/useOnline";
+import Instamart from "./Instamart";
 
 
 
 const Title =()=>(
     <a href="./">
-    <img className="logo" alt="logo" src="https://i.pinimg.com/564x/a7/6c/b0/a76cb0f1ab6950f4884c8c07fb3721e4.jpg"
+    <img className="h-28 px-2 rounded-[12px]" alt="logo" src="https://cdn.dribbble.com/users/1309691/screenshots/16842018/media/bd0f864b4d0ef49952871cb3bef269de.jpg"
     />
     </a>
   );
@@ -16,20 +17,23 @@ function  Header() {
     const [isLoggedIn,setisLoggedIn]=useState(false);
     const isOnline = useOnline(true)
     return (
-    <div className="header">
+    <div className="flex justify-between bg-blue-50 shadow-lg">
       <Title/>
       <div className="nav-items">
-        <ul>
+        <ul className="flex py-10">
           <Link to='/'>
-            <li>Home</li>
+            <li className="px-2">Home</li>
           </Link>
          <Link to="/about">
-          <li>About</li>
+          <li className="px-2">About</li>
           </Link>
-         <Link to="/contact"> <li>
+         <Link to="/contact"> <li className="px-2">
             Contact</li>
          </Link>
-          <li>Cartt</li>
+         <Link to="/instamart"> 
+         <li className="px-2">Instamart</li>
+         </Link>
+          <li className="px-2">Cartt</li>
         </ul>
       </div>
       <h1>{isOnline ? '✅' : '🔴'}</h1>

@@ -20,7 +20,7 @@ const RestaurentDetail = () => {
         <h3>{restaurant?.costForTwoMsg}</h3>
        
 </div>
-   {/* <div> 
+   <div> 
  <h1>Menu</h1>
    <ul>
           {Object.values(restaurant?.menu?.items).map((item) => (
@@ -28,7 +28,7 @@ const RestaurentDetail = () => {
           ))}
           
         </ul>  
-</div>         */}
+</div>        
     </div> 
   )
 }

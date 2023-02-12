@@ -35,18 +35,18 @@ import useOnline from "./Utils/useOnline";
      return  allRestaurants.length === 0 ? (
      <Shimmer/>):(
        <>
-       <div className="search-container">
-         <input type="text" className="search-input" placeholder="search" value={searchinpuTxt} onChange={(e)=>{
+       <div className="search-container p-5 m-2 bg-pink-100 my-5">
+         <input type="text" className="focus:bg-green-200" placeholder="search" value={searchinpuTxt} onChange={(e)=>{
            setSearchtInput(e.target.value)
          }}/>
-         <button className="search-btn" onClick={(e)=>{
+         <button className="p-2 m-2 bg-green-500 hover:bg-sky-700 text-white rounded-md" onClick={(e)=>{
            const data = filterData(searchinpuTxt,allRestaurants)
            setfilteredRestaurants(data)
          }}>search</button>
         
           
        </div>
-     <div className="restaurent-list">
+     <div className="flex flex-wrap bg-gray-200">
        {filteredrestaurants.map((restaurent)=>{
          return (
          <Link to={"/restuarent/"+restaurent.data.id} key={restaurent.data.id}>

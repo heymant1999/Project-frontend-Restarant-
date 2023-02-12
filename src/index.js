@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 
 import App from './App';
-import {createBrowserRouter,RouterProvider,Outlet} from "react-router-dom"
+import {createBrowserRouter,RouterProvider} from "react-router-dom"
 import About from "./About";
 import Error from './Error';
 import Contact from './Contact';
 import Body from './Body';
 import RestaurentDetail from './RestaurentDetail';
 import Profile from './Profile';
+import Instamart from './Instamart';
 
 
 const appRouter=createBrowserRouter([{
@@ -33,7 +34,12 @@ const appRouter=createBrowserRouter([{
   },{
     path:"/restuarant/:resId",
     element:<RestaurentDetail/>
-  }]
+  },
+  {
+    path:"/instamart",
+    element:<Suspense><Instamart/></Suspense>
+  }
+]
   }
   ])
 
