@@ -20,15 +20,15 @@ const RestaurentDetail = () => {
         <h3>{restaurant?.costForTwoMsg}</h3>
        
 </div>
-   <div> 
- <h1>Menu</h1>
-   <ul>
+   {/* <div className="border p-6 space-y-2"> 
+   <h1 className="text-3xl font-semibold">Menu</h1>
+   <ul data-testid="menu">
           {Object.values(restaurant?.menu?.items).map((item) => (
             <li key={item.id}>{item.name}</li>
           ))}
           
         </ul>  
-</div>        
+</div>         */}
     </div> 
   )
 }

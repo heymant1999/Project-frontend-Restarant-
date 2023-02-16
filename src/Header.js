@@ -17,7 +17,7 @@ function  Header() {
     const [isLoggedIn,setisLoggedIn]=useState(false);
     const isOnline = useOnline(true)
     return (
-    <div className="flex justify-between bg-blue-50 shadow-lg">
+    <div className="flex justify-between bg-blue-100 shadow-lg">
       <Title/>
       <div className="nav-items">
         <ul className="flex py-10">
@@ -38,7 +38,7 @@ function  Header() {
       </div>
       <h1>{isOnline ? '✅' : '🔴'}</h1>
       {
-        isLoggedIn?(<button onClick={()=>setisLoggedIn(false)}>Logout</button>):
+        isLoggedIn?(<button className="bg-red-300" onClick={()=>setisLoggedIn(false)}>Logout</button>):
         (<button onClick={()=>setisLoggedIn(true)}>Login</button>)
       }
     </div>
