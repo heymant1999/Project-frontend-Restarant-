@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import  { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import Restaurentcard from "./RestaurentCard";
 import { Link } from "react-router-dom";
 import { filterData } from "./Utils/Helper";
 import useOnline from "./Utils/useOnline";
+import UserContext from "./Utils/userContext";
  
 
 
@@ -12,6 +13,7 @@ import useOnline from "./Utils/useOnline";
      const[allRestaurants,setallRestaurants]=useState([])
      const [filteredrestaurants, setfilteredRestaurants] = useState([]);
      const[searchinpuTxt,setSearchtInput]=useState("")
+     const {user,setuser}=useContext(UserContext)
     
      useEffect(()=>{
        getRestarants();
@@ -42,7 +44,15 @@ import useOnline from "./Utils/useOnline";
          <button className="p-2 m-2 bg-green-500 hover:bg-sky-700 text-white rounded-md" onClick={(e)=>{
            const data = filterData(searchinpuTxt,allRestaurants)
            setfilteredRestaurants(data)
-         }}>search</button>
+         }}>search</button> 
+         <input value ={user.name} onChange={e=>setuser({
+          name:e.target.value,
+          email:"newemail@gmail.com"
+         })}></input>
+          <input value ={user.email} onChange={e=>setuser({
+          ...user,
+          email:e.target.value
+         })}></input>
         
           
        </div>

@@ -1,9 +1,9 @@
 import React from "react";
-import { useState } from "react";
+import { useState,useContext} from "react";
 import { Link } from "react-router-dom";
 import useOnline from "./Utils/useOnline";
 import Instamart from "./Instamart";
-
+import UserContext from "./Utils/userContext";
 
 
 const Title =()=>(
@@ -15,7 +15,8 @@ const Title =()=>(
 
 function  Header() {
     const [isLoggedIn,setisLoggedIn]=useState(false);
-    const isOnline = useOnline(true)
+    const isOnline = useOnline()
+    const {user} =useContext(UserContext) //user from utils usercontext extraxting and des
     return (
     <div className="flex justify-between bg-blue-100 shadow-lg">
       <Title/>
@@ -36,7 +37,8 @@ function  Header() {
           <li className="px-2">Cartt</li>
         </ul>
       </div>
-      <h1>{isOnline ? '✅' : '🔴'}</h1>
+      <h2>{isOnline ? "✅" : "🔴"}</h2>
+      <span className="p-10 font-bold text-rose-900">{user.name}</span>
       {
         isLoggedIn?(<button className="bg-red-300" onClick={()=>setisLoggedIn(false)}>Logout</button>):
         (<button onClick={()=>setisLoggedIn(true)}>Login</button>)
