@@ -29,10 +29,10 @@ useEffect(()=>{
    
 export default useRestaurant;
 
-// export const  getrestarant=async(resId)=>  {
+// export const getRestaurant = async (resId) => {
 //   const data = await fetch(`${FETCH_RUL}${resId}`);
-//   const  restarant = await data.json();
-//   return restarant
-// }
+//   const restarant = await data.json();
+//   return restarant;
+// };
 
   
