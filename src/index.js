@@ -1,8 +1,8 @@
-import React, { Suspense } from 'react';
-import ReactDOM from 'react-dom/client';
+import React, { Suspense ,useContext,useState} from 'react';
+import ReactDOM  from 'react-dom/client';
 
-import App from './App';
-import {createBrowserRouter,RouterProvider} from "react-router-dom"
+ import App from './App';
+import {createBrowserRouter,Outlet,RouterProvider} from "react-router-dom"
 import About from "./About";
 import Error from './Error';
 import Contact from './Contact';
@@ -12,26 +12,32 @@ import Profile from './Profile';
 import Instamart from './Instamart';
 
 
+
+
 const appRouter=createBrowserRouter([{
   path:"/",
   element:<App/>,
   errorElement:<Error/>,
-  children:[{
+  children:[
+    {
     path:"/",
     element:<Body/>
   },
   {
     path:"/about",
     element:<About/>,
-    children:[{
+    children:[
+      {
       path:"profile",
       element:<Profile/>,
-    }]
+    }
+  ]
   },
   {
     path:"/contact",
     element:<Contact/>
-  },{
+  },
+  {
     path:"/restuarant/:resId",
     element:<RestaurentDetail/>
   },

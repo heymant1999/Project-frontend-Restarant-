@@ -6,8 +6,9 @@ const Error = () => {
 console.log(err)
   return (
     <div>
-      <h1>Ooppss!!!!!!!! ERROR in routing</h1>
-      <h2>{err.status +" "+ err.StatusText}</h2>
+      <h1>Oops!!!</h1>
+      <h2>Something Went Wrong</h2>
+      <p>{`${err}`}</p>
     </div>
   )
 }

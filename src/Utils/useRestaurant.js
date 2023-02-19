@@ -2,17 +2,37 @@ import { useState,useEffect } from "react";
 import { FETCH_RUL } from "../Constant";
 
 const useRestaurant=(resId)=>{
-    const [restaurant,setrestaurent]=useState({});
+    const [restaurantMenu,setRestaurantMenu]=useState(null);
+   
     
 useEffect(()=>{
-      getRestaurentInfo();
+       getRestaurentInfo();
+      
     },[])
+
     async function getRestaurentInfo(){
-      const data =  await fetch(FETCH_RUL+resId);
+      // const data =  await fetch(FETCH_RUL+resId);
+      const data = await fetch(`${FETCH_RUL}${resId}`);
       const json = await data.json();
-     
-      setrestaurent(json.data);
+      // console.log( "resss" ,json.data)
+      setRestaurantMenu(json.data);
+      
     }
-    return restaurant
+
+   
+    return restaurantMenu
 }
+
+
+
+
+   
 export default useRestaurant;
+
+// export const  getrestarant=async(resId)=>  {
+//   const data = await fetch(`${FETCH_RUL}${resId}`);
+//   const  restarant = await data.json();
+//   return restarant
+// }
+
+  

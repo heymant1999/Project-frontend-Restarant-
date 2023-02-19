@@ -51,7 +51,7 @@ import UserContext from "./Utils/userContext";
          })}></input>
           <input value ={user.email} onChange={e=>setuser({
           ...user,
-          email:e.target.value
+          email:"newemail@gmail.com"
          })}></input>
         
           
@@ -59,7 +59,7 @@ import UserContext from "./Utils/userContext";
      <div className="flex flex-wrap bg-gray-200">
        {filteredrestaurants.map((restaurent)=>{
          return (
-         <Link to={"/restuarant/"+restaurent.data.id} key={restaurent.data.id}>
+         <Link to={`/restuarant/${restaurent.data.id}`} key={restaurent.data.id}>
          <Restaurentcard {...restaurent.data} />
          </Link>)
        })}

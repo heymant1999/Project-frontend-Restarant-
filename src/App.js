@@ -26,7 +26,7 @@ const App =()=>{
     user,
     setuser:setuser}}>
     <Header/>
-    <Outlet/>
+    <Outlet/>                         // all children will go to the outlet
     <Footer/>
     </UserContext.Provider>
   )
